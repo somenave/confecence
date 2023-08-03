@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ConferenceRepository;
+use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ConferenceRepository::class)]
-class Conference
+#[ORM\Entity(repositoryClass: CommentRepository::class)]
+class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,6 +25,13 @@ class Conference
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Conference $conference = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoFilename = null;
 
     public function getId(): ?int
     {
@@ -75,6 +82,30 @@ class Conference
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getConference(): ?Conference
+    {
+        return $this->conference;
+    }
+
+    public function setConference(?Conference $conference): static
+    {
+        $this->conference = $conference;
+
+        return $this;
+    }
+
+    public function getPhotoFilename(): ?string
+    {
+        return $this->photoFilename;
+    }
+
+    public function setPhotoFilename(?string $photoFilename): static
+    {
+        $this->photoFilename = $photoFilename;
 
         return $this;
     }

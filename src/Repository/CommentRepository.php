@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Conference;
+use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Conference>
+ * @extends ServiceEntityRepository<Comment>
  *
- * @method Conference|null find($id, $lockMode = null, $lockVersion = null)
- * @method Conference|null findOneBy(array $criteria, array $orderBy = null)
- * @method Conference[]    findAll()
- * @method Conference[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Comment[]    findAll()
+ * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConferenceRepository extends ServiceEntityRepository
+class CommentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Conference::class);
+        parent::__construct($registry, Comment::class);
     }
 
 //    /**
-//     * @return Conference[] Returns an array of Conference objects
+//     * @return Comment[] Returns an array of Comment objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ConferenceRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Conference
+//    public function findOneBySomeField($value): ?Comment
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
